@@ -1,7 +1,7 @@
 //import express and Router method 
 const notes = require('express').Router();
 //Deconstruct readFromFile ad readAndAppend methods from fsUtils file
-const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
+const { readFromFile, readAndAppend, writeToFile} = require('../helpers/fsUtils');
 //import uuid to create a unique id
 const { v4: uuidv4 } = require('uuid');
 
@@ -19,7 +19,7 @@ notes.post('/', (req,res) => {
         const newNote = {
             title,
             text,
-            note_id: uuidv4(),
+            id: uuidv4(),
         };
         //updating db.json by appending the newly created note
         readAndAppend(newNote, './db/db.json');
@@ -33,6 +33,26 @@ notes.post('/', (req,res) => {
     } else {
         res.json('Error in posing a new note');
     }
+});
+
+notes.delete('/:id', (req,res) => {
+    const idToDelete = req.params.id;
+    readFromFile('./db/db.json')
+    .then((data) => JSON.parse(data))
+    .then((notes) => {
+        const updatedNotes = notes.filter((note) => note.id !== idToDelete);
+        writeToFile('./db/db.json', updatedNotes);
+
+        const response = {
+            status: 'success',
+            body: updatedNotes,
+        };
+        res.json(response);
+    })
+    .catch((error) => {
+        console.error(error);
+        res.json("Error deleting the note");
+    });
 });
 //exporting notes router.
 module.exports = notes;
