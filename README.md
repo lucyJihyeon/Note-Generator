@@ -89,12 +89,12 @@ JavaScript,CSS,HTML,Express,Node.js
 ## Preview 
 
 This is the preview of the application 
-![alt preview](./Develop/img/screen-recording.gif)
+![alt preview](./img/screen-recording.gif)
 
 ## Link
 
 This is the link to the application
-[alt preview]()
+https://note-generator-hxdl.onrender.com
 
 ## Contact
 
