@@ -35,12 +35,17 @@ notes.post('/', (req,res) => {
     }
 });
 
+//Delete route for deleting a targetted item in db.json
 notes.delete('/:id', (req,res) => {
+    //get the id to delete from the params in the request 
     const idToDelete = req.params.id;
     readFromFile('./db/db.json')
     .then((data) => JSON.parse(data))
     .then((notes) => {
+        //loop through all of the items in the db.json to check if its id matches the id to delete.
+        //then, update the notes without the note with a matching id
         const updatedNotes = notes.filter((note) => note.id !== idToDelete);
+        //update the db.json with the updated notes
         writeToFile('./db/db.json', updatedNotes);
 
         const response = {
