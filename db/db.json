@@ -4,18 +4,8 @@
         "text": "Test text"
     },
     {
-        "title": "Routes",
-        "text": "Routes are used to define how the application responds to client requests.",
-        "id": "8ead3945-f2a9-4217-8ff8-254ffa7a0af9"
-    },
-    {
         "title": "Middleware",
         "text": "Middleware is a function that has access to the request object, the response object, and the next middleware function in the application's request-response cycle.",
         "id": "acaafe96-b7db-4aef-a6b3-0db58b5fbe66"
-    },
-    {
-        "title": "Express",
-        "text": "A web application framework for Node.js\n",
-        "id": "9b777c27-9708-40ba-b6cd-3aed204f0211"
     }
 ]
